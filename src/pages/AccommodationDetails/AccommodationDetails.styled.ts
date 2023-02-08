@@ -78,8 +78,12 @@ export const DescriptionAndFacility = styled.div`
     grid-column-gap: 1.5rem;
     grid-template-columns: repeat(3, minmax(0, 1fr));
 
-    @media ${mediaQueries.minWidthLG} {
+    @media ${mediaQueries.maxWidthLG} {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media ${mediaQueries.maxWidthSM} {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
     }
   }
 `;
@@ -93,6 +97,7 @@ export const NoAvailableRoomsSection = styled.div`
   justify-content: center;
   text-align: center;
   h2 {
+    margin-top: 2rem;
     a {
       color: var(--secondary);
       text-decoration: underline;
