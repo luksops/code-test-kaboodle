@@ -15,7 +15,10 @@ function App() {
       <>
         <Route path="/" element={<Navigate to="/code-test-kaboodle" />} />
         <Route path="/code-test-kaboodle" element={<Home />} />
-        <Route path="/:accommodationId" element={<AccommodationDetails />} />
+        <Route
+          path="/code-test-kaboodle/:accommodationId"
+          element={<AccommodationDetails />}
+        />
       </>
     )
   );
