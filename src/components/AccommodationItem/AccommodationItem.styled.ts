@@ -18,7 +18,7 @@ export const AccommodationGridItem = styled.div`
     }
   }
 
-  a {
+  & > a {
     min-width: 35%;
     height: 100%;
 
