@@ -25,9 +25,4 @@ export const AppContainer = styled.div`
   @media ${mediaQueries.maxWidthXS} {
     padding: 0 1.5rem;
   }
-
-  h1 {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
 `;

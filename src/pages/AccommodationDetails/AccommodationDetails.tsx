@@ -11,6 +11,8 @@ import {
   AvailableRoomsSection,
 } from "./AccommodationDetails.styled";
 import { ListGrid } from "../../components/Grid2Cols/Grid2Cols.styled";
+import { Button } from "../../components/Button/Button";
+import { FaChevronLeft } from "react-icons/fa";
 
 export const AccommodationDetails: FC = () => {
   const { accommodationId } = useParams() as { accommodationId: string };
@@ -42,7 +44,10 @@ export const AccommodationDetails: FC = () => {
     <>
       <AccommodationDetailsContainer>
         <AccommodationDetailsBanner>
-          <h1>{accommodation?.name}</h1>
+          <div className="accommodation-details-title-wrapper">
+            <Button href="/" icon={<FaChevronLeft />} placeholder="Home" />
+            <h1>{accommodation?.name}</h1>
+          </div>
           <img
             src={accommodation?.images[0].filename}
             alt={accommodation?.images[0].alt}

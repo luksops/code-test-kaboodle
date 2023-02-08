@@ -3,10 +3,6 @@ import { mediaQueries } from "../../Styles/media-queries";
 
 export const AccommodationDetailsContainer = styled.div`
   margin-bottom: 100px;
-
-  h2 {
-    margin-bottom: 1rem;
-  }
 `;
 
 export const AccommodationDetailsBanner = styled.div`
@@ -15,6 +11,18 @@ export const AccommodationDetailsBanner = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
+
+  .accommodation-details-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 2rem;
+
+    h1 {
+      margin-left: 1rem;
+    }
+  }
 `;
 
 export const DescriptionAndFacility = styled.div`
