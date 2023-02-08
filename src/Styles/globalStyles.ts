@@ -58,7 +58,7 @@ body {
       margin-block-end: 0;
     }
 
-    a:-webkit-any-link {
+    a {
       color: inherit;
       text-decoration: none;
     }

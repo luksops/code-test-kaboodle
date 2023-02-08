@@ -16,7 +16,7 @@ interface Props {
 export const AccommodationItem: FC<Props> = ({ accommodation }) => {
   return (
     <AccommodationGridItem>
-      <Link to={`/${accommodation.id}`}>
+      <Link to={`${accommodation.id}`}>
         <AccommodationImage
           imageUrl={accommodation.images[0].filename}
           title={accommodation.images[0].alt}
@@ -24,7 +24,7 @@ export const AccommodationItem: FC<Props> = ({ accommodation }) => {
       </Link>
       <AccommodationContent>
         <div className="accommodation-content-name-and-rating">
-          <Link to={`/${accommodation.id}`}>{accommodation.name}</Link>
+          <Link to={`${accommodation.id}`}>{accommodation.name}</Link>
           <div className="accommodation-content-rating">
             <p>{accommodation.rating.id}</p>
             <FaStar />
