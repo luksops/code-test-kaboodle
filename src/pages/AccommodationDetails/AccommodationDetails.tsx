@@ -50,56 +50,54 @@ export const AccommodationDetails: FC = () => {
   }, [accommodation]);
 
   return (
-    <>
-      <AccommodationDetailsContainer>
-        <AccommodationDetailsBanner>
-          <div className="accommodation-details-title-wrapper">
-            <Button href="/" icon={<FaChevronLeft />} placeholder="Home" />
-            <h1>{accommodation?.name}</h1>
-          </div>
-          <img
-            src={accommodation?.images[0].filename}
-            alt={accommodation?.images[0].alt}
-          />
-        </AccommodationDetailsBanner>
+    <AccommodationDetailsContainer>
+      <AccommodationDetailsBanner>
+        <div className="accommodation-details-title-wrapper">
+          <Button href="/" icon={<FaChevronLeft />} placeholder="Home" />
+          <h1>{accommodation?.name}</h1>
+        </div>
+        <img
+          src={accommodation?.images[0].filename}
+          alt={accommodation?.images[0].alt}
+        />
+      </AccommodationDetailsBanner>
 
-        <h2>More about {accommodation?.location.name}:</h2>
-        <DescriptionAndFacility>
-          <div className="accommodation-details-description">
-            {accommodation?.description && parseHTML(accommodation.description)}
-          </div>
+      <h2>More about {accommodation?.location.name}:</h2>
+      <DescriptionAndFacility>
+        <div className="accommodation-details-description">
+          {accommodation?.description && parseHTML(accommodation.description)}
+        </div>
 
-          <div className="accommodation-details-facilities">
-            <h2>Facilities Available:</h2>
-            <div className="accommodation-details-facilities-grid">
-              {accommodation?.facilities.map((facility, index) => (
-                <p>
-                  {index + 1}. {facility.label}
-                </p>
-              ))}
-            </div>
+        <div className="accommodation-details-facilities">
+          <h2>Facilities Available:</h2>
+          <div className="accommodation-details-facilities-grid">
+            {accommodation?.facilities.map((facility, index) => (
+              <p>
+                {index + 1}. {facility.label}
+              </p>
+            ))}
           </div>
-        </DescriptionAndFacility>
+        </div>
+      </DescriptionAndFacility>
 
-        {Boolean(availableRoomsList?.length) ? (
-          <AvailableRoomsSection>
-            <h2>Available Rooms:</h2>
-            <ListGrid>
-              {availableRoomsList?.map(
-                (room) => room && <RoomItem key={room.id} room={room} />
-              )}
-            </ListGrid>
-          </AvailableRoomsSection>
-        ) : (
-          <NoAvailableRoomsSection>
-            <h2>
-              Sorry, {accommodation?.location.name} has no available rooms at
-              the moment. <br /> <Link to="/">Go back to homepage</Link> to find
-              out other options.
-            </h2>
-          </NoAvailableRoomsSection>
-        )}
-      </AccommodationDetailsContainer>
-    </>
+      {Boolean(availableRoomsList?.length) ? (
+        <AvailableRoomsSection>
+          <h2>Available Rooms:</h2>
+          <ListGrid>
+            {availableRoomsList?.map(
+              (room) => room && <RoomItem key={room.id} room={room} />
+            )}
+          </ListGrid>
+        </AvailableRoomsSection>
+      ) : (
+        <NoAvailableRoomsSection>
+          <h2>
+            Sorry, {accommodation?.location.name} has no available rooms at the
+            moment. <br /> <Link to="/">Go back to homepage</Link> to find out
+            other options.
+          </h2>
+        </NoAvailableRoomsSection>
+      )}
+    </AccommodationDetailsContainer>
   );
 };

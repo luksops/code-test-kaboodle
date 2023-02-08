@@ -6,6 +6,18 @@ export const AccommodationGridItem = styled.div`
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--primaryLighter);
 
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:nth-last-child(2) {
+    @media ${mediaQueries.minWidthLG} {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
   a {
     min-width: 35%;
     height: 100%;

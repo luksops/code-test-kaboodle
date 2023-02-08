@@ -7,20 +7,41 @@ interface Props {
   onClick?: () => void;
   icon?: ReactNode;
   placeholder: string;
+  iconPosition?: "left" | "right";
+  disabled?: boolean;
 }
 
-export const Button: FC<Props> = ({ onClick, href, icon, placeholder }) => {
+export const Button: FC<Props> = ({
+  onClick,
+  href,
+  icon,
+  placeholder,
+  iconPosition = "left",
+  disabled = false,
+}) => {
   return href ? (
     <Link to={href}>
-      <InnerButton onClick={onClick}>
-        {icon && icon}
-        {placeholder}
+      <InnerButton
+        disabled={disabled}
+        hasIcon={Boolean(icon)}
+        iconPosition={iconPosition}
+        onClick={onClick}
+      >
+        {iconPosition === "left" && icon && icon}
+        <p>{placeholder}</p>
+        {iconPosition === "right" && icon && icon}
       </InnerButton>
     </Link>
   ) : (
-    <InnerButton onClick={onClick}>
-      {icon && icon}
-      {placeholder}
+    <InnerButton
+      disabled={disabled}
+      hasIcon={Boolean(icon)}
+      iconPosition={iconPosition}
+      onClick={onClick}
+    >
+      {iconPosition === "left" && icon && icon}
+      <p>{placeholder}</p>
+      {iconPosition === "right" && icon && icon}
     </InnerButton>
   );
 };
