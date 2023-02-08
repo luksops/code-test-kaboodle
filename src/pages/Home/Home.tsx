@@ -1,7 +1,7 @@
 import { FC } from "react";
 import accommodationJson from "../../MockData/accommodation.json";
 import { AccommodationItem } from "../../components/AccommodationItem/AccommodationItem";
-import { ListGrid } from "./Home.styled";
+import { ListGrid } from "../../components/Grid2Cols/Grid2Cols.styled";
 
 export const Home: FC = () => {
   return (

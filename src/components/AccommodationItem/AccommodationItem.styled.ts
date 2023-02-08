@@ -1,18 +1,33 @@
 import styled from "styled-components";
+import { mediaQueries } from "../../Styles/media-queries";
 
 export const AccommodationGridItem = styled.div`
   display: flex;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--primaryLighter);
+
+  a {
+    min-width: 35%;
+    height: 100%;
+
+    @media ${mediaQueries.maxWidthMD} {
+      min-width: 0;
+      height: 0;
+    }
+  }
 `;
 
 export const AccommodationImage = styled.div<{
   imageUrl: string;
 }>`
-  min-width: 35%;
+  min-width: 100%;
   height: 100%;
-  background: center/cover no-repeat url(${(props) => props.imageUrl});
+
+  @media ${mediaQueries.minWidthMD} {
+    background: center/cover no-repeat url(${(props) => props.imageUrl});
+  }
 `;
+
 export const AccommodationContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,7 +44,6 @@ export const AccommodationContent = styled.div`
       background-color: var(--secondary);
       padding: 0.5rem;
       border-radius: 4px;
-      color: var(--white);
 
       display: flex;
       align-items: center;
@@ -42,7 +56,8 @@ export const AccommodationContent = styled.div`
   }
 
   .accommodation-content-location {
-    color: var(--textColorSecondaryLighter);
+    font-weight: 300;
+    color: var(--secondaryLighter);
     margin-bottom: 1rem;
   }
 
@@ -52,16 +67,13 @@ export const AccommodationContent = styled.div`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 
-    color: var(--textColorSecondaryLight);
     margin-bottom: 1rem;
   }
 
   .accommodation-content-type-facilities {
     display: flex;
     justify-content: space-between;
-    color: var(--textColorSecondaryLight);
     font-weight: 700;
-    /* justify-content: end; */
     align-items: flex-end;
     flex-grow: 1;
   }

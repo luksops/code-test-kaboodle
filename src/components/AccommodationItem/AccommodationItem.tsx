@@ -7,6 +7,7 @@ import {
 import accommodationJson from "../../MockData/accommodation.json";
 import { FaStar } from "react-icons/fa";
 import parseHTML from "html-react-parser";
+import { Link } from "react-router-dom";
 
 interface Props {
   accommodation: typeof accommodationJson.accommodations[0];
@@ -15,13 +16,15 @@ interface Props {
 export const AccommodationItem: FC<Props> = ({ accommodation }) => {
   return (
     <AccommodationGridItem>
-      <AccommodationImage
-        imageUrl={accommodation.images[0].filename}
-        title={accommodation.images[0].alt}
-      />
+      <Link to={`/${accommodation.id}`}>
+        <AccommodationImage
+          imageUrl={accommodation.images[0].filename}
+          title={accommodation.images[0].alt}
+        />
+      </Link>
       <AccommodationContent>
         <div className="accommodation-content-name-and-rating">
-          <p>{accommodation.name}</p>
+          <Link to={`/${accommodation.id}`}>{accommodation.name}</Link>
           <div className="accommodation-content-rating">
             <p>{accommodation.rating.id}</p>
             <FaStar />

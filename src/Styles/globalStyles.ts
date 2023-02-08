@@ -37,6 +37,9 @@ body {
     --textColorSecondaryLighter: #727272;
     --textColorHighlight: #eee;
 
+    --boxShadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
     color: var(--textColor);
 
 
