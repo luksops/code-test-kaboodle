@@ -4,14 +4,14 @@
 
 Design and build a basic prototype listing UI for Accommodations and Rooms, similar to what you might see on booking.com, populated from the given data in the two json files.
 
-Accommodation display should show:
+Accommodation display should show (Visible at homepage):
 
 - Accommodation Name
 - Description
 - Type
 - Facilities
 
-Room display should show:
+Room display should show (Visible on clicking a accommodation from homepage that has rooms available):
 
 - Room Name
 - Room Type
