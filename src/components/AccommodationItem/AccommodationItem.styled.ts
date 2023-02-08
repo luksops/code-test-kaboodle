@@ -75,9 +75,14 @@ export const AccommodationContent = styled.div`
 
   .accommodation-content-description {
     display: -webkit-box;
+    text-overflow: ellipsis;
     overflow: hidden;
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+
+    /* Fallback for webkit-line-clamp */
+    line-height: 1.3rem;
+    max-height: 3.9rem;
 
     margin-bottom: 1rem;
   }

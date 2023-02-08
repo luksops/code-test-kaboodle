@@ -25,25 +25,22 @@ export const Home: FC = () => {
     <>
       <HomepageTitle>Kabookings</HomepageTitle>
 
-      <div>
-        <Pagination
-          changePageFunction={setCurrentPage}
-          currentPage={currentPage}
-        />
-        <ListGrid>
-          {paginatedAccommodations &&
-            paginatedAccommodations.map((accommodation) => (
-              <AccommodationItem
-                accommodation={accommodation}
-                key={accommodation.id}
-              />
-            ))}
-        </ListGrid>
-        <Pagination
-          changePageFunction={setCurrentPage}
-          currentPage={currentPage}
-        />
-      </div>
+      <Pagination
+        changePageFunction={setCurrentPage}
+        currentPage={currentPage}
+      />
+      <ListGrid>
+        {paginatedAccommodations?.map((accommodation) => (
+          <AccommodationItem
+            accommodation={accommodation}
+            key={accommodation.id}
+          />
+        ))}
+      </ListGrid>
+      <Pagination
+        changePageFunction={setCurrentPage}
+        currentPage={currentPage}
+      />
     </>
   );
 };

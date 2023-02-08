@@ -80,7 +80,7 @@ export const AccommodationDetails: FC = () => {
         </div>
       </DescriptionAndFacility>
 
-      {Boolean(availableRoomsList?.length) ? (
+      {availableRoomsList?.length ? (
         <AvailableRoomsSection>
           <h2>Available Rooms:</h2>
           <ListGrid>
