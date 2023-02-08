@@ -9,6 +9,7 @@ export const InnerButton = styled.button`
   border: none;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 
   transition: background 0.3s ease;
 

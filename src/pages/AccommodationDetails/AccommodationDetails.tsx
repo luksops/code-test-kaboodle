@@ -1,6 +1,9 @@
 import { FC, useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
-import { AccommodationType } from "../../MockData/accommodationTypes";
+import { Link, useParams } from "react-router-dom";
+import {
+  AccommodationAvailabilityType,
+  AccommodationType,
+} from "../../MockData/accommodationTypes";
 import accommodationsJson from "../../MockData/accommodation.json";
 import accommodationsAvailabilityJson from "../../MockData/accommodation_availability.json";
 import parseHTML from "html-react-parser";
@@ -9,10 +12,13 @@ import {
   AccommodationDetailsBanner,
   DescriptionAndFacility,
   AvailableRoomsSection,
+  NoAvailableRoomsSection,
 } from "./AccommodationDetails.styled";
 import { ListGrid } from "../../components/Grid2Cols/Grid2Cols.styled";
 import { Button } from "../../components/Button/Button";
 import { FaChevronLeft } from "react-icons/fa";
+import { RoomItem } from "../../components/RoomItem/RoomItem";
+import { AvailableAccommodationType } from "../../MockData/accommodationTypes";
 
 export const AccommodationDetails: FC = () => {
   const { accommodationId } = useParams() as { accommodationId: string };
@@ -28,16 +34,19 @@ export const AccommodationDetails: FC = () => {
     if (currentAccommodation) setAccommodation({ ...currentAccommodation });
   }, [accommodationId]);
 
-  const availableRoomsList = useMemo(() => {
+  const availableRoomsList = useMemo(():
+    | (AvailableAccommodationType | null)[]
+    | undefined => {
     const findAvailableRooms = accommodation?.rooms.map((accRoom) => {
-      const availableRooms = accommodationsAvailabilityJson.rooms.filter(
-        (availableRoom) => accRoom.id === availableRoom.id
-      );
+      const availableRooms: AccommodationAvailabilityType | undefined =
+        accommodationsAvailabilityJson.rooms.find(
+          (availableRoom) => accRoom.id === availableRoom.id
+        );
 
-      return availableRooms.length ? { ...availableRooms, ...accRoom } : null;
+      return availableRooms ? { ...availableRooms, ...accRoom } : null;
     });
 
-    return findAvailableRooms?.filter((room) => room);
+    return findAvailableRooms?.filter((room) => Boolean(room) !== false);
   }, [accommodation]);
 
   return (
@@ -72,14 +81,24 @@ export const AccommodationDetails: FC = () => {
           </div>
         </DescriptionAndFacility>
 
-        <AvailableRoomsSection>
-          <h2>Available Rooms:</h2>
-          <ListGrid>
-            {availableRoomsList?.map((room) => (
-              <p>{room?.name}</p>
-            ))}
-          </ListGrid>
-        </AvailableRoomsSection>
+        {Boolean(availableRoomsList?.length) ? (
+          <AvailableRoomsSection>
+            <h2>Available Rooms:</h2>
+            <ListGrid>
+              {availableRoomsList?.map(
+                (room) => room && <RoomItem key={room.id} room={room} />
+              )}
+            </ListGrid>
+          </AvailableRoomsSection>
+        ) : (
+          <NoAvailableRoomsSection>
+            <h2>
+              Sorry, {accommodation?.location.name} has no available rooms at
+              the moment. <br /> <Link to="/">Go back to homepage</Link> to find
+              out other options.
+            </h2>
+          </NoAvailableRoomsSection>
+        )}
       </AccommodationDetailsContainer>
     </>
   );

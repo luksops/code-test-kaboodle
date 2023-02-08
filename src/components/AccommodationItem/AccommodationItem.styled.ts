@@ -32,7 +32,7 @@ export const AccommodationContent = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 
   .accommodation-content-name-and-rating {
     display: flex;
