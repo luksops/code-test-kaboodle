@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -12,7 +13,8 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Navigate to="/code-test-kaboodle" />} />
+        <Route path="/code-test-kaboodle" element={<Home />} />
         <Route path="/:accommodationId" element={<AccommodationDetails />} />
       </>
     )
