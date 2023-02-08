@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/code-test-kaboodle/static/js/main.72dc8221.js",
+    "main.js": "/code-test-kaboodle/static/js/main.989d669b.js",
     "index.html": "/code-test-kaboodle/index.html",
-    "main.72dc8221.js.map": "/code-test-kaboodle/static/js/main.72dc8221.js.map"
+    "main.989d669b.js.map": "/code-test-kaboodle/static/js/main.989d669b.js.map"
   },
   "entrypoints": [
-    "static/js/main.72dc8221.js"
+    "static/js/main.989d669b.js"
   ]
 }
