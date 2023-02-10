@@ -2,7 +2,11 @@ import { FC, useEffect, useState } from "react";
 import accommodationJson from "../../MockData/accommodation.json";
 import { AccommodationItem } from "../../components/AccommodationItem/AccommodationItem";
 import { ListGrid } from "../../components/Grid2Cols/Grid2Cols.styled";
-import { HomepageTitle, SearchInputWrapper } from "./Home.styled";
+import {
+  HomepageTitle,
+  NoSearchResultsWrapper,
+  SearchInputWrapper,
+} from "./Home.styled";
 import { paginateAccommodationJson } from "../../helpers/paginateAccommodatonJson";
 import { AccommodationType } from "../../MockData/accommodationTypes";
 import { Pagination } from "../../components/Pagination/Pagination";
@@ -56,18 +60,29 @@ export const Home: FC = () => {
       <Pagination
         changePageFunction={setCurrentPage}
         currentPage={currentPage}
+        paginatedArrayLength={Number(paginatedAccommodations?.length)}
       />
       <ListGrid>
-        {paginatedAccommodations?.map((accommodation) => (
-          <AccommodationItem
-            accommodation={accommodation}
-            key={accommodation.id}
-          />
-        ))}
+        {paginatedAccommodations?.length ? (
+          paginatedAccommodations?.map((accommodation) => (
+            <AccommodationItem
+              accommodation={accommodation}
+              key={accommodation.id}
+            />
+          ))
+        ) : (
+          <NoSearchResultsWrapper>
+            <p>
+              Could not find any accommodations matching the search. Try
+              searching for something different.
+            </p>
+          </NoSearchResultsWrapper>
+        )}
       </ListGrid>
       <Pagination
         changePageFunction={setCurrentPage}
         currentPage={currentPage}
+        paginatedArrayLength={Number(paginatedAccommodations?.length)}
       />
     </>
   );

@@ -2,14 +2,20 @@ import { FC } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Button } from "../Button/Button";
 import { PaginationWrapper } from "./Pagination.styled";
-import accommodationJson from "../../MockData/accommodation.json";
 
 interface Props {
   currentPage: number;
   changePageFunction: (targetPage: number) => void;
+  paginatedArrayLength: number;
 }
 
-export const Pagination: FC<Props> = ({ currentPage, changePageFunction }) => {
+export const Pagination: FC<Props> = ({
+  currentPage,
+  changePageFunction,
+  paginatedArrayLength,
+}) => {
+  console.log(paginatedArrayLength);
+
   return (
     <PaginationWrapper>
       <Button
@@ -18,8 +24,9 @@ export const Pagination: FC<Props> = ({ currentPage, changePageFunction }) => {
         icon={<FaChevronLeft />}
         placeholder="PREVIOUS"
       />
+
       <Button
-        disabled={currentPage + 2 > accommodationJson.accommodations.length}
+        disabled={currentPage + 2 > paginatedArrayLength}
         onClick={() => changePageFunction(currentPage + 1)}
         icon={<FaChevronRight />}
         placeholder="NEXT"

@@ -42,8 +42,5 @@ export const InnerButton = styled.button<{
     }
   }
 
-  &:active,
-  &:focus {
-    border: 1px solid var(--secondaryLighter);
-  }
+
 `;

@@ -25,4 +25,8 @@ export const SearchInputWrapper = styled.div`
   }
 `;
 
+export const NoSearchResultsWrapper = styled.div`
+  grid-column: 1 / 3;
+`;
+
 
