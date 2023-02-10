@@ -1,8 +1,8 @@
 import accommodationJson from "../MockData/accommodation.json";
 
 export const paginateAccommodationJson = (
-  json: typeof accommodationJson,
+  json: typeof accommodationJson.accommodations,
   page: number
 ) => {
-  return json.accommodations.slice(page * 10, (page + 1) * 10);
+  return json.slice(page * 10, (page + 1) * 10);
 };
